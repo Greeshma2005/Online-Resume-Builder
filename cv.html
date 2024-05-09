@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Resume Builder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+            .heading {
+                text-align: center;
+                font-size: 40px;
+                font-family: Verdana, Tahoma, sans-serif;
+                color: darkblue;
+            }
+            .navbar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                font-family: sans-serif;
+            }
+            .navbar ul {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .navbar ul li {
+                margin-left: 15px;
+                font-size: 20px;
+                white-space: nowrap;
+            }
+            .navbar ul li a {
+                text-decoration: none;
+                color: black;
+                padding: 5px 10px;
+                transition: all 0.42s ease;
+            }
+            .navbar ul li a:hover {
+                transform: scale(1.1);
+                color: rgb(149, 72, 72);
+                box-shadow: 0 0 10px rgb(77, 177, 216);
+                border-radius: 20px;
+            }
+            .container {
+                display: none;
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                width: auto;
+                flex-direction: column;
+            }
+            #info{
+                display: block;
+            }
+            input, textarea, button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+            .resume-preview {
+                text-align: center;
+                padding: 20px;
+                border-radius: 8px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-top: 20px;
+            }
+            .resume-preview h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .section {
+                
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #ccc; 
+            }
+
+            .section-heading {
+                font-weight: bold;
+                margin-bottom: 5x;
+                text-align: left; 
+            }
+            .resume-preview .section-heading {
+                text-align: left;
+            }
+            .section-divider {
+                background-color: #000; 
+                margin-bottom: 5px;
+            }
+            .section-content {
+                text-align: left; 
+                color: #333; 
+            }
+            section.container .section-heading {
+                font-weight: bold;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+            .degree {
+                font-weight: bold;
+                color: #000;
+            }
+            .contact-info {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            .contact-info p {
+                margin-right: 10px;
+            }
+            .contact-info a {
+                display: flex;
+                align-items: center;
+                color: black;
+                text-decoration: none;
+            }
+            .contact-info a:hover {
+                color: rgb(149, 72, 72);
+            }
+            .contact-info a i {
+                width: 20px;
+                margin-right: 5px;
+            }
+            .toggle_btn,.navbar .dropdown_menu{
+            display: none;
+        }
+            @media (max-width: 1246px){
+            .heading{
+                font-size: 40px;
+                align-items: center;
+                text-align: center;
+            }
+            header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+        .navbar .toggle_btn,.navbar .dropdown_menu{
+            display: none;
+        }
+        .navbar ul li {
+            margin:auto;
+            font-size: 10.5px;
+        }
+        .container {
+            width: 50%;
+        }
+        #preview  h1{
+        font-size: 20px;
+    }
+        #preview .resume-preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #preview .resume-preview .contact-info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #preview .resume-preview .contact-info p {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #preview .resume-preview .contact-info a {
+        display: flex;
+        align-items: center;
+        color: black;
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+        }
+        @media (max-width: 679px){
+            .heading{
+                font-size: 25px;
+                text-align: center;
+            }
+            header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar ul li {
+            margin:auto;
+            font-size: 8px;
+        }
+        .toggle_btn,.navbar .dropdown_menu{
+            display: none;
+        }
+        .container {
+            width: 80%;
+        }
+        #preview .resume-preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #preview .resume-preview .contact-info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #preview .resume-preview .contact-info p {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #preview .resume-preview .contact-info a {
+        display: flex;
+        align-items: center;
+        color: black;
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+        }
+        
+            
+            @media (max-width: 500px) {
+             .toggle_btn {
+                    display: none;
+                    position: absolute;
+                    top: 30px;
+                    right:20px;
+                    color: #5d8dda;
+                    font-size: 2rem;
+                    display: flex;
+                    cursor: pointer;
+                }
+                .navbar ul {
+                    display: none;
+                    flex-direction: column;
+                    width: 100%;
+                }
+                 .dropdown_menu {
+                    position: absolute;
+                    right: 2rem;
+                    top: 70px;
+                    right:10px;
+                    height: auto;
+                    width: 300px;
+                    background: rgba(148, 214, 221, 0.1);
+                    backdrop-filter: blur(20px);
+                    display: none;
+                    border-radius: 10px;
+                    z-index:1;
+                }
+                .dropdown_menu.open {
+                    display: block;
+                    height: auto;
+                }
+                .container {
+                    top:120px;
+                    left:50%;
+                    width: 80%;
+                    transform: translateX(-50%);
+                    position: absolute;
+                    background-color: #fff;
+                    padding: 30px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+                input,
+                textarea,
+                button {
+                    padding: 6px; 
+                    font-size: 12px; 
+                }
+                 .section-heading,
+                .section-content,
+                .resume-preview h1,
+                .contact-info p,
+                .contact-info a {
+                    font-size: 12px;
+                }
+
+                .heading {
+                    font-size: 20px; 
+                    margin-top: 20px;
+                }
+                .navbar ul li {
+                    font-size: 12px; 
+                    margin: 8px; 
+                }
+                #preview .resume-preview {
+                    display: flex;
+                    flex-direction: column;
+                align-items: center;
+                }
+                #preview .resume-preview .contact-info {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+                #preview .resume-preview .contact-info p {
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                }
+                #preview .resume-preview .contact-info a {
+                    display: flex;
+                    align-items: center;
+                    color: black;
+                    text-decoration: none;
+                    margin-bottom: 10px;
+                }
+            }
+            @media(max-width:445px)
+            {
+                section h2{
+                    font-size: 25px;
+                }
+                .heading{
+                    margin-top: 20px;
+                }
+                #preview .resume-preview {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+    
+                #preview .resume-preview .contact-info {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+                #preview  h1{
+                    font-size: 15px;
+                }
+                #preview .resume-preview .contact-info p {
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    font-size: 10px;
+                }
+                #preview .resume-preview .contact-info a {
+                    display: flex;
+                    align-items: center;
+                    color: black;
+                    text-decoration: none;
+                    margin-bottom: 10px;
+                }
+            }
+            @media(max-width:364px)
+            {
+                section h2{
+                    font-size: 20px;
+                }
+                .heading{
+                    margin-top: 20px;
+                }
+                #preview .resume-preview {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                #preview .resume-preview .contact-info {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+                #preview  h1{
+                    font-size: 10px;
+                }
+                #preview .resume-preview .contact-info p {
+                    margin-right: 10px;
+                    margin-bottom: 5px;
+                    font-size: 7px;
+                }
+                #preview .resume-preview .contact-info a {
+                    display: flex;
+                    align-items: center;
+                    color: black;
+                    text-decoration: none;
+                    margin-bottom: 10px;
+                }
+            }
+        </style>
+        <style id="pdfStyles">
+            .resume-preview {
+                font-size: 16px; 
+            }
+            .resume-preview h1 {
+                font-size: 24px; 
+            }
+            .contact-info p, .contact-info a {
+                font-size: 14px;
+            }
+            .section-heading {
+                font-size: 20px; 
+            }
+            .section-content {
+                font-size: 16px; 
+            }
+        </style>        
+</head>
+<body>
+    <div>
+        <header>
+            <h1 class="heading">Online Resume Builder</h1>
+            <div class="toggle_btn">
+                <i class='bx bx-menu toggle_btn'></i>
+            </div>
+        </header>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" onclick="toggleSection('info')">PERSONAL INFO</a></li>
+                    <li><a href="#" onclick="toggleSection('summary')">SUMMARY</a></li>
+                    <li><a href="#" onclick="toggleSection('education')">EDUCATION</a></li>
+                    <li><a href="#" onclick="toggleSection('projects')">PROJECTS</a></li>
+                    <li><a href="#" onclick="toggleSection('experience')">EXPERIENCE</a></li>
+                    <li><a href="#" onclick="toggleSection('skills')">SKILLS</a></li>
+                    <li><a href="#" onclick="toggleSection('certifications')">CERTIFICATIONS</a></li>
+                    <li><a href="#" onclick="toggleSection('preview')">PREVIEW</a></li>
+                </ul>
+                <div class="dropdown_menu">
+                    <li><a href="#" onclick="toggleSection('info')">PERSONAL INFO</a></li>
+                    <li><a href="#" onclick="toggleSection('summary')">SUMMARY</a></li>
+                    <li><a href="#" onclick="toggleSection('education')">EDUCATION</a></li>
+                    <li><a href="#" onclick="toggleSection('projects')">PROJECTS</a></li>
+                    <li><a href="#" onclick="toggleSection('experience')">EXPERIENCE</a></li>
+                    <li><a href="#" onclick="toggleSection('skills')">SKILLS</a></li>
+                    <li><a href="#" onclick="toggleSection('certifications')">CERTIFICATIONS</a></li>
+                    <li><a href="#" onclick="toggleSection('preview')">PREVIEW</a></li>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <!-- Personal Info Section -->
+    <section id="info" class="container">
+        <h2>Personal Information</h2>
+        <p>FULL NAME <input type="text" id="fullName" placeholder="Full Name" required></p>
+        <p>EMAIL ADDRESS <input type="email" id="email" placeholder="Email" required></p>
+        <p>PHONE NUMBER <input type="tel" id="phoneNumber" placeholder="Phone Number" required></p>
+        <p>LINKEDIN URL <input type="text" id="linkedin" placeholder="https://linkedin.com/in/yourname"></p>
+        <button onclick="populateResumeTemplate()">Save Personal Info</button>
+    </section>
+    <!-- Summary Section -->
+    <section id="summary" class="container">
+        <h2>Summary</h2>
+        <textarea id="summaryText" placeholder="Summary"></textarea>
+        <button onclick="populateResumeTemplate()">Save Summary</button>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div id="educationInputs">
+            <div class="education-input">
+                <input type="text" class="degree" placeholder="Degree" required>
+                <input type="text" class="university" placeholder="University" required>
+                <input type="text" class="location" placeholder="Location">
+                <input type="text" class="graduationYear" placeholder="Year of Graduation">
+                <input type="text" class="gpa" placeholder="8.5GPA">
+            </div>
+        </div>
+        <button onclick="addEducation()">Add Education</button>
+        <button onclick="populateResumeTemplate()">Save Education</button>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div id="projectInputs">
+            <!-- Project input will be added dynamically here -->
+        </div>
+        <button onclick="addProject()">Add Project</button>
+        <button onclick="populateResumeTemplate()">Save Projects</button>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2>Experience</h2>
+        <div id="experienceInputs">
+            <!-- Experience input will be added dynamically here -->
+        </div>
+        <button onclick="addExperience()">Add Experience</button>
+        <button onclick="populateResumeTemplate()">Save Experience</button>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>Skills</h2>
+        <div id="skillsInputs">
+            <!-- Skills input will be added dynamically here -->
+        </div>
+        <button onclick="addSkills()">Add Skills</button>
+        <button onclick="populateResumeTemplate()">Save Skills</button>
+    </section>
+    <!-- Certifications Section -->
+    <section id="certifications" class="container">
+        <h2>Certifications</h2>
+        <div id="certificationInputs">
+            <!-- Certification input will be added dynamically here -->
+        </div>
+        <button onclick="addCertification()">Add Certification</button>
+        <button onclick="populateResumeTemplate()">Save Certifications</button>
+    </section>
+    <!-- Preview Section -->
+    <section id="preview" class="container">
+        <div class="resume-preview">
+            <div id="resumePreview" class="resume-content"></div>
+            <button onclick="downloadResume()">Download as PDF</button>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script>
+        function toggleSection(sectionId) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+        const toggleBtn = document.querySelector('.toggle_btn i');
+        const dropdownMenu = document.querySelector('.dropdown_menu');
+
+        toggleBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('open');
+        });
+
+        // Close dropdown menu when clicking a section link
+        const dropdownLinks = document.querySelectorAll('.dropdown_menu a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                dropdownMenu.classList.remove('open');
+            });
+        });
+
+        function addEducation() {
+            const educationInputs = document.getElementById('educationInputs');
+            const newEducationInput = document.createElement('div');
+            newEducationInput.classList.add('education-input');
+            newEducationInput.innerHTML = `
+                <input type="text" class="degree" placeholder="Degree" required>
+                <input type="text" class="university" placeholder="University" required>
+                <input type="text" class="location" placeholder="Location">
+                <input type="text" class="graduationYear" placeholder="Year of Graduation">
+                <input type="text" class="gpa" placeholder="GPA">
+            `;
+            educationInputs.appendChild(newEducationInput);
+        }
+        function addProject() {
+            const projectInputs = document.getElementById('projectInputs');
+            const newProjectInput = document.createElement('div');
+            newProjectInput.classList.add('project-input');
+            newProjectInput.innerHTML = `
+                <input type="text" class="projectTitle" placeholder="Project Title">
+                <input type="text" class="projectLink" placeholder="Project Link">
+                <textarea class="projectDescription" placeholder="Project Description"></textarea>
+            `;
+            projectInputs.appendChild(newProjectInput);
+        }
+
+        function addExperience() {
+            const experienceInputs = document.getElementById('experienceInputs');
+            const newExperienceInput = document.createElement('div');
+            newExperienceInput.classList.add('experience-input');
+            newExperienceInput.innerHTML = `<input type="text" class="companyName" placeholder="Company Name">
+                <input type="text" class="companyLocation" placeholder="Company Location">
+                <textarea class="workDescription" placeholder="Work Description"></textarea>
+            `;
+            experienceInputs.appendChild(newExperienceInput);
+        }
+
+        function addSkills() {
+            const skillsInputs = document.getElementById('skillsInputs');
+            const newSkillsInput = document.createElement('div');
+            newSkillsInput.classList.add('skills-input');
+            newSkillsInput.innerHTML = `
+                <textarea class="skillCategory" placeholder="Skill Category"></textarea>
+                <input type="text" class="skillsList" placeholder="Skills (e.g., HTML, CSS, JavaScript)">
+            `;
+            skillsInputs.appendChild(newSkillsInput);
+        }
+
+        function addCertification() {
+            const certificationInputs = document.getElementById('certificationInputs');
+            const newCertificationInput = document.createElement('div');
+            newCertificationInput.classList.add('certification-input');
+            newCertificationInput.innerHTML = `
+                <input type="text" class="certificateName" placeholder="Certificate Name">
+                <input type="text" class="certifyingAuthority" placeholder="Certifying Authority">
+                <input type="text" class="certificationYear" placeholder="Certification Year">
+                <textarea class="certificationDescription" placeholder="Description"></textarea>
+            `;
+            certificationInputs.appendChild(newCertificationInput);
+        }
+        function populateResumeTemplate() {
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const linkedin = document.getElementById("linkedin").value;
+            const summary = document.getElementById("summaryText").value;
+            const linkedinUsername = linkedin.split('/').pop();
+            const educationHTML = getEducationHTML();
+            const projectsHTML = getProjectsHTML();
+            const experienceHTML = getExperienceHTML();
+            const skillsHTML = getSkillsHTML();
+            const certificationsHTML = getCertificationsHTML();
+            const resumeHTML = `
+                <div>
+                    ${fullName ? `<h1 style="text-align: center;">${fullName}</h1>` : ''}
+                    ${email || phoneNumber || linkedin ? `
+                    <div class="contact-info">
+                        ${email ? `<p><i class='bx bx-mail-send'></i> ${email}</p>` : ''}
+                        ${phoneNumber ? `<p><i class='bx bx-phone'></i> ${phoneNumber}</p>` : ''}
+                        ${linkedin ? `<p><a href="${linkedin}" target="_blank"><i class='bx bxl-linkedin-square' ></i>${linkedinUsername}</a></p>` : ''}
+                    </div>
+                    <hr>` : ''}
+                    ${summary ? `
+                    <div class="section">
+                        <h2 class="section-heading">SUMMARY</h2>
+                        <div class="section-divider"></div>
+                        <p class="section-content">${summary}</p>
+                    </div>` : ''}
+                    ${educationHTML ? `
+                    <div class="section">
+                        <h2 class="section-heading">EDUCATION</h2>
+                        <div class="section-divider"></div>
+                        ${educationHTML}
+                    </div>` : ''}
+                    ${projectsHTML ? `
+                    <div class="section">
+                        <h2 class="section-heading">PROJECTS</h2>
+                        <div class="section-divider"></div>
+                        ${projectsHTML}
+                    </div>` : ''}
+                    ${experienceHTML ? `
+                    <divclass="section">
+                        <h2 class="section-heading">EXPERIENCE</h2>
+                        <div class="section-divider"></div>
+                        ${experienceHTML}
+                    </div>` : ''}
+                    ${skillsHTML ? `
+                    <div class="section">
+                        <h2 class="section-heading">SKILLS</h2>
+                        <div class="section-divider"></div>
+                        ${skillsHTML}
+                    </div>` : ''}
+                    ${certificationsHTML ? `
+                    <div class="section">
+                        <h2 class="section-heading">CERTIFICATIONS</h2>
+                        <div class="section-divider"></div>
+                        ${certificationsHTML}
+                    </div>` : ''}
+                </div>
+            `;
+            document.getElementById("resumePreview").innerHTML = resumeHTML;
+        }
+        function getEducationHTML() {
+            const educationInputs = document.querySelectorAll('.education-input');
+            let educationHTML = '';
+            educationInputs.forEach(input => {
+                const degree = input.querySelector('.degree').value;
+                const university = input.querySelector('.university').value;
+                const location = input.querySelector('.location').value;
+                const graduationYear = input.querySelector('.graduationYear').value;
+                const gpa = input.querySelector('.gpa').value;
+                if (degree || university || location || graduationYear || gpa) {
+                    educationHTML += `
+                    <p class="section-content">
+                        <span class="degree">${degree}</span><br>
+                        ${university} | ${location} | ${graduationYear} | ${gpa}
+                    </p>
+                `;
+                }
+            });
+            return educationHTML;
+        }
+        function getProjectsHTML() {
+            const projectInputs = document.querySelectorAll('.project-input');
+            let projectsHTML = '';
+            projectInputs.forEach(input => {
+                const projectTitle = input.querySelector('.projectTitle').value;
+                const projectLink = input.querySelector('.projectLink').value;
+                const projectDescription = input.querySelector('.projectDescription').value;
+                if (projectTitle || projectLink || projectDescription) {
+                    projectsHTML += `
+                    <p class="section-content">
+                        <span class="degree">${projectTitle}</span> |
+                        <a href="${projectLink}" target="_blank" style="color: black; text-decoration: none; transition: color 0.3s;">${projectLink}</a><br>
+                        ${projectDescription}
+                    </p>
+                `;
+                }
+            });
+            return projectsHTML;
+        }
+        function getExperienceHTML() {
+            const experienceInputs = document.querySelectorAll('.experience-input');
+            let experienceHTML = '';
+            experienceInputs.forEach(input => {
+                const companyName = input.querySelector('.companyName').value;
+                const companyLocation = input.querySelector('.companyLocation').value;
+                const workDescription = input.querySelector('.workDescription').value;
+                if (companyName || companyLocation || workDescription) {
+                    experienceHTML += `
+                    <p class="section-content">
+                        <span class="degree">${companyName}</span> | ${companyLocation}<br>
+                        ${workDescription}
+                    </p>
+                `;
+                }
+            });
+            return experienceHTML;
+        }
+        function getSkillsHTML() {
+            const skillsInputs = document.querySelectorAll('.skills-input');
+            let skillsHTML = '';
+            skillsInputs.forEach(input => {
+                const skillCategory = input.querySelector('.skillCategory').value;
+                const skillsList = input.querySelector('.skillsList').value;
+                if (skillCategory || skillsList) {
+                    skillsHTML += `
+                    <p class="section-content">
+                        <strong>${skillCategory}:</strong> ${skillsList}
+                    </p>
+                `;
+                }
+            });
+            return skillsHTML;
+        }
+        function getCertificationsHTML() {
+            const certificationInputs = document.querySelectorAll('.certification-input');
+            let certificationsHTML = '';
+            certificationInputs.forEach(input=> {
+                const certificateName = input.querySelector('.certificateName').value;
+                const certifyingAuthority = input.querySelector('.certifyingAuthority').value;
+                const certificationYear = input.querySelector('.certificationYear').value;
+                const certificationDescription = input.querySelector('.certificationDescription').value;
+                if (certificateName || certifyingAuthority || certificationYear || certificationDescription) {
+                    certificationsHTML += `
+                    <p class="section-content">
+                        <span class="degree">${certificateName}</span><br>
+                        ${certifyingAuthority} | ${certificationYear}<br>
+                        ${certificationDescription}
+                    </p>
+                `;
+                }
+            });
+            return certificationsHTML;
+        }
+
+        function downloadResume() {
+            const resumePreview = document.getElementById("resumePreview");
+            if (!resumePreview) {
+                console.error("Resume preview element not found.");
+                return;
+            }
+    const pdfStyles = document.getElementById("pdfStyles");
+    resumePreview.appendChild(pdfStyles.cloneNode(true));
+    const opt = {
+        margin: 0.5,
+        filename: 'resume.pdf',
+        image: { type: 'pdf', quality: 1.0 },
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            letterRendering: true
+        },
+        jsPDF: { unit: 'in', format: [11.7, 19.2], orientation: 'portrait' }
+    };
+    html2pdf().from(resumePreview).set(opt).save();
+}
+    </script>
+</body>
+</html>

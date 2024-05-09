@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="zero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="showLogin()">Login</button>
+                <button type="button" class="toggle-btn" onclick="showRegister()">Register</button>
+            </div>
+            <form class="input-group" id="loginForm" style="display: none;" onsubmit="return login()">
+                <input type="text" class="input-field" placeholder="Username" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <label class="Check-box"><input type="checkbox"><span>Remember Password</span></label>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <form class="input-group" id="registerForm" onsubmit="return register()">
+                <input type="text" class="input-field" placeholder="Username" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <label class="Check-box"><input type="checkbox" required><span>I agree to the terms and conditions</span></label>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function showLogin() {
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registerForm").style.display = "none";
+        }
+        function showRegister() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+        }
+        function login() {
+            const username = document.getElementById("loginForm").querySelector('input[type="text"]').value;
+            const password = document.getElementById("loginForm").querySelector('input[type="password"]').value;
+            if (username.trim() === "" || password.trim() === "") {
+                alert("Please enter username and password");
+                return false; 
+            }
+            window.location.href = "index.html";
+            return false; 
+        }
+        function register() {
+            const username = document.getElementById("registerForm").querySelector('input[type="text"]').value;
+            const password = document.getElementById("registerForm").querySelector('input[type="password"]').value;
+            if (username.trim() === "" || password.trim() === "") {
+                alert("Please enter username and password");
+                return false; 
+            }
+            window.location.href = "index.html";
+            return false; 
+        }
+    </script>
+</body>
+</html>

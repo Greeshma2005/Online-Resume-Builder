@@ -1,0 +1,349 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #bcd4e6;
+}
+header{
+    color: rgb(17, 15, 15);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top:0;
+    left :0;
+    width:100%;
+    background-color: #bcd4e6;
+    z-index:1000;
+}
+.brand-name{
+    font-size: 25px;
+    font-weight: bold;
+}
+.logo{
+    font-size: 30px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.navbar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 25px;
+}
+.navbar ul{
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin:  0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+.navbar ul li{
+    margin-left: 15px;
+    font-size: 1.1rem;
+}
+.navbar ul li:nth-child(1){
+    margin-right: auto;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: rgb(15, 14, 14);
+    padding: 8px 15px;
+    transition: all .42s ease;
+}
+.navbar ul li a:hover{
+    transform: scale(1.1);
+    color: rgb(28, 25, 25);
+    box-shadow: 0 0 10px white;
+    border-radius: 15px;
+}
+.navbar ul li:nth-child(2) a {
+    padding: 8px 12px; 
+    border: 2px solid #007bff; 
+    border-radius: 5px; 
+    color: #007bff; 
+    transition: all .3s ease;
+}
+
+.navbar ul li:nth-child(2) a:hover {
+    background-color: #007bff; 
+    color: #fff; 
+}
+.hero {
+    background-color: #007bff; 
+    color: #fff; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3em; 
+    margin-bottom: 0.5em;
+}
+
+.hero-content h2 {
+    font-size: 2em; 
+    margin-bottom: 1.5em;
+}
+
+.hero-content p {
+    font-size: 1.2em; 
+    margin-bottom: 2em; 
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff; 
+    color: #007bff; 
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    color: #fff; 
+}
+.zero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-box {
+    width: 320px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.button-box {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.toggle-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.Check-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.Check-box input {
+    margin-right: 10px;
+    flex-shrink:0;
+}
+.check-box span{
+    white-space: nowrap;
+}
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #ff105f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #ffad06;
+}
+
+.moto{
+    background-color: #bcd4e6;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.moto p {
+    font-size: 32px; 
+    color: #181717; 
+    background-color: #bcd4e6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+
+#template{
+    padding: 50px 20px;
+    background-color: #bcd4e6;
+}
+.cards {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.card {
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .images img {
+    width: 100%;
+    border-bottom: 2px solid #ccc;
+}
+
+.card .description {
+    padding: 15px;
+}
+
+.card .description p {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.card .button {
+    text-align: center;
+}
+
+.card .button .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(100, 149, 237);
+    color: #fff;
+    border: 2px solid rgb(100, 149, 237);
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card .button .btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card .button .btn:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+#footer {
+    background-color: #a3c0dd; 
+    padding: 20px; 
+    text-align: center; 
+}
+#footer footer {
+    color: #333;
+    font-size: 14px; 
+}
+#footer {
+    border-top: 1px solid #ccc;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+@media screen and (max-width: 375px) {
+    header {
+        padding: 10px;
+    }
+    .brand-name {
+        font-size: 18px; 
+    }
+    .logo {
+        font-size: 22px; 
+    }
+    .navbar {
+        display: flex;
+        align-items: center;
+    }
+    .navbar ul {
+        display: flex;
+    }
+    .navbar ul li {
+        margin-left: 10px; 
+        font-size: 0.9rem; 
+    }
+}
+
+@media screen and (max-width: 339px) {
+    .form-box {
+        width: 280px; 
+        padding: 15px;
+    }
+    .toggle-btn {
+        padding: 8px 16px; 
+        font-size: 14px; 
+    }
+    .input-field {
+        padding: 8px; 
+        font-size: 14px; 
+    }
+    .Check-box {
+        font-size: 12px; 
+    }
+    .submit-btn {
+        padding: 10px; 
+        font-size: 14px;
+    }
+}
