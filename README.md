@@ -1,5 +1,4 @@
 # 📄 Online Resume Builder
-🔗 Live Demo: Online Resume Builder
 
 This project allows users to create a professional resume effortlessly by filling in their details in a pre-designed template. Once completed, the resume can be downloaded as a PDF with a single click! 🚀
 
