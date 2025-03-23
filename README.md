@@ -3,10 +3,10 @@
 This project allows users to create a professional resume effortlessly by filling in their details in a pre-designed template. Once completed, the resume can be downloaded as a PDF with a single click! 🚀
 
 ## ✨ Features
-✔ Pre-designed resume template 🖋️
-✔ Easy-to-fill form for user details 📝
-✔ Instant PDF download 📥
-✔ Clean & professional design 🎨
+✔ Pre-designed resume template 🖋️ <br>
+✔ Easy-to-fill form for user details 📝 <br>
+✔ Instant PDF download 📥 <br>
+✔ Clean & professional design 🎨 <br>
 ✔ Fully responsive and user-friendly UI 📱💻
 
 ## 🛠️ How to Use
